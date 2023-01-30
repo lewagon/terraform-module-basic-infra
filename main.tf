@@ -92,11 +92,11 @@ resource "aws_instance" "servers" {
 
 
 output "public_ips" {
-    value = aws_instance.servers.*.public_ip
+    value = "${aws_instance.servers.*.public_ip}"
 }
 
 
 output "public_dns" {
-    value = aws_instance.servers.*.public_dns
+    value = "${aws_instance.servers.*.public_dns}"
 }
 
