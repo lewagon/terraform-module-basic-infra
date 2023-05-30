@@ -80,7 +80,7 @@ resource "aws_instance" "servers" {
     count               = 2
     ami                 = "ami-0da36f7f059b7086e" // Ubuntu 20.04
     instance_type       = "t2.micro"
-    key_name            = "tf-key-pair"
+    key_name            = "${var.github_nickname}_key_pair"
 
     security_groups = [aws_security_group.sg-ec2.name]
 
