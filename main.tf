@@ -15,12 +15,11 @@ provider "aws" {
     region  = "eu-west-1"
 }
 
-
 # -----------------------------------------------------------
 # Create the keypair which will be used to connect to the EC2 instance
 
 resource "aws_key_pair" "tf-key-pair" {
-key_name = "tf-key-pair"
+key_name = "${var.github_nickname}_key_pair"
 public_key = tls_private_key.rsa.public_key_openssh
 }
 
@@ -86,7 +85,7 @@ resource "aws_instance" "servers" {
     security_groups = [aws_security_group.sg-ec2.name]
 
     tags = {
-        Name = "Server${count.index}"
+        Name = "${var.github_nickname}_key_pair${count.index}"
     }
 }
 
