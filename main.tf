@@ -37,7 +37,7 @@ filename = "tf-key-pair"
 # -----------------------------------------------------------
 #Create the Security Group to allow HTTP and SSH traffic
 resource "aws_security_group" "sg-ec2" {
-    name        = "sg"
+    name        = "${var.github_nickname}_key_pair"
 
     ingress {
         description = "HTTP from everywhere"
